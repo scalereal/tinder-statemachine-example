@@ -29,27 +29,17 @@ configurations {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.50"
     implementation "com.tinder.statemachine:statemachine:0.2.0"
-    testImplementation "io.kotlintest:kotlintest-runner-junit5:3.3.2"
-}
 
-sourceSets {
-    main.kotlin.srcDirs = ['src']
-    test.kotlin.srcDirs = ['test']
-    main.resources.srcDirs = ['res']
-    test.resources.srcDirs = ['test-res']
-    main.java.srcDirs = [] // disable java source dirs
-    test.java.srcDirs = [] // disable java test dirs
+    testImplementation(
+            'org.assertj:assertj-core:3.12.2',
+            'org.junit.jupiter:junit-jupiter-api:5.4.2'
+    )
+    testRuntime('org.junit.jupiter:junit-jupiter-engine:5.4.2')
 }
 
 test {
     useJUnitPlatform()
-    testLogging {
-        events "PASSED", "FAILED", "SKIPPED"
-        exceptionFormat "full"
-    }
 }
-
-test.classpath += configurations.devOnly
 
 compileKotlin {
     kotlinOptions {
@@ -64,4 +54,3 @@ compileTestKotlin {
         javaParameters = true
     }
 }
-kapt { arguments { arg("micronaut.processing.incremental", true) } }

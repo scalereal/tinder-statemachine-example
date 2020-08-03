@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="test.kotlin.WHBStateMachineTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-08-03T20:03:48" hostname="Sandeshs-MacBook-Pro.local" time="0.183">
+  <properties/>
+  <testcase name="transitionState()" classname="test.kotlin.WHBStateMachineTest" time="0.183"/>
+  <system-out><![CDATA[dsfsfsf
+main.kotlin.WHBEvent$Wake@d8843515
+]]></system-out>
+  <system-err><![CDATA[Aug 04, 2020 1:33:48 AM main.kotlin.WHBStateMachine$whbStateMachine$1$5 invoke
+INFO: Wake time recorded
+]]></system-err>
+</testsuite>
