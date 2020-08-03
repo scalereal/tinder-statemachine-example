@@ -1,0 +1,67 @@
+plugins {
+    id "org.jetbrains.kotlin.jvm" version "1.3.50"
+    id "org.jetbrains.kotlin.kapt" version "1.3.50"
+}
+
+version "0.1"
+group "statemmachine.example"
+
+repositories {
+    mavenCentral()
+}
+
+apply(plugin: 'org.jetbrains.kotlin.jvm')
+apply(plugin: 'org.jetbrains.kotlin.kapt')
+apply(plugin: 'jacoco')
+
+repositories {
+    jcenter()
+    mavenCentral()
+    maven {
+        url 'https://jitpack.io'
+    }
+}
+
+configurations {
+    devOnly
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.50"
+    implementation "com.tinder.statemachine:statemachine:0.2.0"
+    testImplementation "io.kotlintest:kotlintest-runner-junit5:3.3.2"
+}
+
+sourceSets {
+    main.kotlin.srcDirs = ['src']
+    test.kotlin.srcDirs = ['test']
+    main.resources.srcDirs = ['res']
+    test.resources.srcDirs = ['test-res']
+    main.java.srcDirs = [] // disable java source dirs
+    test.java.srcDirs = [] // disable java test dirs
+}
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        events "PASSED", "FAILED", "SKIPPED"
+        exceptionFormat "full"
+    }
+}
+
+test.classpath += configurations.devOnly
+
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = '1.8'
+        javaParameters = true
+    }
+}
+
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = '1.8'
+        javaParameters = true
+    }
+}
+kapt { arguments { arg("micronaut.processing.incremental", true) } }
