@@ -10,7 +10,9 @@ In this example, we create a StateMachine from the following state diagram.
 
 ### Gradle dependecy
 
-```implementation 'com.tinder.statemachine:statemachine:0.2.0'```
+```
+    implementation 'com.tinder.statemachine:statemachine:0.2.0'
+```
 
 ### Define states, event, and side effects:
 
